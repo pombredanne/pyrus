@@ -4,10 +4,10 @@ from time import sleep
 from os.path import exists
 from urllib.request import urlopen, Request
 from multiprocessing.managers import BaseManager
-from pyrus.mplogging import get_logger
+from pyrus.mplogging import Logger
 from pyrus import AbstractQueueConsumer
 
-logger = get_logger('pyrus.download')
+logger = Logger('pyrus.download')
 
 DOWNLOAD_USER_AGENT = 'python'
 BUF_SIZE = 4096
