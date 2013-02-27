@@ -1,6 +1,7 @@
 import atexit
 import time
-from logging import NOTSET, INFO, DEBUG, WARN, CRITICAL, addLevelName, getLevelName
+from logging import NOTSET, INFO, DEBUG, WARN, ERROR, CRITICAL
+from logging import addLevelName, getLevelName
 from multiprocessing import Process, current_process
 from multiprocessing.managers import BaseManager, BaseProxy
 from pyrus import AbstractQueueConsumer
@@ -93,6 +94,9 @@ class _Logger():
 
 	def set_log_level(self, level):
 		self.level = level
+
+	def error(self, pid, msg):
+		self._log(pid, ERROR, msg)
 
 	def critical(self, pid, msg):
 		self._log(pid, CRITICAL, msg)
