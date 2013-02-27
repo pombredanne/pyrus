@@ -52,7 +52,7 @@ class AbstractQueueConsumer(AbstractMPBorg):
 		self._terminator = 'TERMINATE'.encode() + urandom(10)
 		self._queue = self._manager.Queue(-1)
 		self._consumers = consumers
-		self._start_consumers(consumers)
+		self._start_consumers(self._consumers)
 
 	def shutdown(self, timeout=SHUTDOWN_WAIT_TIMEOUT):
 		"""Kick starts the shut-down process for the class"""
@@ -63,6 +63,11 @@ class AbstractQueueConsumer(AbstractMPBorg):
 			if not self.queue.empty():
 				msg = 'Killed log consumer with messages still in queue.'
 				print(type(self), msg)
+
+	def blocking_flush(self):
+		"""Process all contents as if shutting down, and restart consumers"""
+		self.shutdown(None)
+		self._start_consumers(self._consumers)
 
 	@abstractmethod
 	def _record_handler(self, *args):
