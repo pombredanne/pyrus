@@ -9,6 +9,30 @@ This is designed to be a utility module that provides simplified helpers for use
 
 This project is currently being incubated at https://github.com/abn/jsnoop
 
+Installation
+-----
+You can install this using _easy_install_ or _pip_
+```bash
+easy_install http://github.com/abn/pyrus/tarball/master#egg=pyrus-0.0.1
+```
+
+```bash
+pip http://github.com/abn/pyrus/tarball/master#egg=pyrus-0.0.1
+```
+*NOTE:* This is not a stable module yet, so I suggest using a virtualenv.
+
+Setup under a virtualenv
+-----
+This is one way of setting it up, you can choose to include __--system-site-packages__ if you want any of the global modules to be available.
+```bash
+# required only once
+virtualenv -p $(which python3) --prompt=pyrus.env pyrus.env
+# activate the env
+source pyrus.env/bin/activate
+# required only once, unless you are reinstalling etc.
+pip http://github.com/abn/pyrus/tarball/master#egg=pyrus-0.0.1
+```
+
 Py´rus
 -----
 n.  1.  (Bot.) A genus of rosaceous trees and shrubs having pomes for fruit.
