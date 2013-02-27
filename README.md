@@ -7,8 +7,6 @@ This is designed to be a utility module that provides simplified helpers for use
 - checksum - A helper module to handle fingerprinting of in-memory and on-disk objects dynamically.
 - download - A module that acts as a multiprocess aware download manager that can handle both async/blocking download requests.
 
-This project is currently being incubated at https://github.com/abn/jsnoop
-
 Installation
 -----
 You can install this using _easy_install_ or _pip_
