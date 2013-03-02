@@ -1,5 +1,5 @@
 from http.cookiejar import CookieJar
-from urllib.request import build_opener, HTTPCookieProcessor
+from urllib.request import build_opener, urlopen, HTTPCookieProcessor
 from urllib.error import HTTPError
 from urllib.parse import urlencode
 from copy import deepcopy
@@ -50,6 +50,15 @@ def open_url(url, opener=build_opener(), data=None):
 	"""
 	response = opener.open(url, data)
 	return response
+
+def test_url(url):
+	"""Checks if a url resource is available. Returns True if response status
+	is in (200, 301, 302)."""
+	try:
+		response = urlopen(url, timeout=1)
+		return response.status in (200, 301, 302)
+	except:
+		return False
 
 def _response(arg):
 	if isinstance(arg, str):
